@@ -1,0 +1,17 @@
+msgid "Create Print Variant"
+msgstr "ar old - إنشاء نسخة الطباعة"
+
+msgid "Creates a new, slightly modified, node from an existing one"
+msgstr "ar - Creates a new, slightly modified, node from an existing one"
+
+msgid "Create Print Variant"
+msgstr "إنشاء نسخة الطباعة"
+
+msgid "Text to prepend to title"
+msgstr "النص المضاف إلى مقدمة العنوان"
+
+msgid "Enter text to add to the title of a print variant. A space will be added between this text and the title. Example: Print Variant -"
+msgstr "‫أدخل نصًا لإضافته إلى عنوان نسخة الطباعة. سيتم إضافة مسافة بين هذا النص والعنوان. مثال: نسخة الطباعة -‬"
+
+msgid "PPI Print Variant Settings"
+msgstr "‫إعداد PPI لنسخة الطباعة‬"

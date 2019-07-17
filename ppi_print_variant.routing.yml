@@ -1,0 +1,19 @@
+ppi_print_variant.node.print_variant:
+  path: '/ppi/{node}/print_variant'
+  defaults:
+    _controller: '\Drupal\ppi_print_variant\Controller\PpiPrintVariantNodeController::printVariantNode'
+    _title_callback: '\Drupal\ppi_print_variant\Controller\PpiPrintVariantNodeController::createPageTitle'
+  requirements:
+    _custom_access: '\Drupal\ppi_print_variant\Controller\PpiPrintVariantNodeAccess::printVariantNode'
+  options:
+    _admin_route: TRUE
+    parameters:
+      node:
+        type: entity:node
+ppi_print_variant.settingsform:
+  path: '/admin/config/ppi-print-variant'
+  defaults:
+    _form: '\Drupal\ppi_print_variant\Form\PpiPrintVariantSettingForm'
+    _title: 'PPI Print Variant Setting'
+  requirements:
+    _permission: 'Administer PPI Print Variant Settings'

@@ -1,0 +1,6 @@
+ppi_print_variant.node.print_variant:
+  route_name: ppi_print_variant.node.print_variant
+  base_route: entity.node.canonical
+  group: node
+  title: 'Create Print Variant'
+  weight: 5

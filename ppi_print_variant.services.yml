@@ -1,0 +1,10 @@
+services:
+  ppi_print_variant.entity.form_builder:
+    class: Drupal\ppi_print_variant\Entity\PpiPrintVariantEntityFormBuilder
+    arguments: ['@entity.manager', '@form_builder']
+  ppi_print_variant.address_event_subscriber:
+    class: Drupal\ppi_print_variant\EventSubscriber\AddressEventSubscriber
+    tags:
+      - { name: event_subscriber }
+  ppi_print_variant.node_finder:
+    class: Drupal\ppi_print_variant\PpiPrintVariantNodeFinder

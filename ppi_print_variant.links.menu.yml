@@ -1,0 +1,5 @@
+ppi_print_variant.config_menu:
+  title: "PPI Print Variant Settings"
+  route_name: ppi_print_variant.settingsform
+  parent: system.admin_config_content
+  description: 'Configure the PPI Print Variant module.'

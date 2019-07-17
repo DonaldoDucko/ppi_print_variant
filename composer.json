@@ -1,0 +1,9 @@
+{
+    "name": "donaldoducko/ppi_print_variant",
+    "description": "Creates a new, slightly modified, node from an existing one.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=7.0.0"
+    }
+}

@@ -1,0 +1,78 @@
+<?php
+
+use Drupal\Core\Url;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+function ppi_print_variant_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+      case 'help.page.ppi_print_variant':
+          $output = '';
+          $output .= '<h3>' . t('About') . '</h3>';
+          $output .= '<p>' . t('Create new content from existing content without online specific paragraphs.') . '</p>';
+          return  $output;
+
+      default:
+  }
+}
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function ppi_print_variant_entity_type_build(array &$entity_types) {
+  if(isset($entity_types['node'])) {
+    $entity_types['node']->setFormClass('ppi_print_variant', 'Drupal\ppi_print_variant\Form\PpiPrintVariantNodeForm');
+  }
+
+}
+
+/**
+ * Implements hook_entity_operation().
+ */
+function ppi_print_variant_entity_operation(\Drupal\Core\Entity\EntityInterface $entity) {
+  $operations = [];
+  $bundle = $entity->bundle();
+
+  // Only add an operation for node entities.
+  if ($entity->getEntityTypeId() !== 'node') {
+    return $operations;
+  }
+  
+  if (!_ppi_print_variant_has_print_variant_permission($bundle)) {
+    return $operations;
+  }
+
+  $path = '/ppi/' . $entity->id() . '/print_variant';
+  $operations['print_variant'] = [
+    'title' => t('Create Print Variant'),
+    'weight' => '100',
+    'url' => Url::fromUri('internal:/' . trim($path, '/')),
+  ];
+
+  return $operations;
+}
+
+/**
+ * Determine if the current user has permission to create a print variant.
+ *
+ * @param string $bundle
+ *   The bundle machine name to examine.
+ *
+ * @return bool
+ *   TRUE or FALSE
+ */
+function _ppi_print_variant_has_print_variant_permission($bundle) {
+  if(!is_string($bundle)) {
+    throw new InvalidArgumentException('Argument 1 passed to _ppi_print_variant_has_print_variant_permission() must be of type string, ' . gettype($bundle) . ' given.');
+  }
+  $current_user = \Drupal::currentUser();
+  if ($current_user->hasPermission("administer nodes")) {
+    return TRUE;
+  }
+  if ($current_user->hasPermission("bypass node access")) {
+    return TRUE;
+  }
+  if ($current_user->hasPermission("print_variant $bundle content") && $current_user->hasPermission("create $bundle content")) {
+    return TRUE;
+  }
+  return FALSE;
+}

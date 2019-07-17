@@ -1,0 +1,5 @@
+Administer PPI Print Variant Settings:
+  title: 'PPI Print Variant Settings'
+  description: 'Administer PPI Print Variant Settings'
+permission_callbacks:
+  - \Drupal\ppi_print_variant\PpiPrintVariantPermissions::printVariantTypePermissions
