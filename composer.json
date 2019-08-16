@@ -1,5 +1,5 @@
 {
-    "name": "donaldoducko/ppi_print_variant",
+    "name": "ppimedia/ppi_print_variant",
     "description": "Creates a new, slightly modified, node from an existing one.",
     "type": "drupal-module",
     "license": "GPL-2.0-or-later",
